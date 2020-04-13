@@ -1,0 +1,18 @@
+<div> 
+    <h1>
+      Upcoming Angular Events</h1>
+
+         <!-- Single element binding -->
+         <!-- <event-thumbnail #thumbnail [event] = "event1" (eventClick) = "handleEventClicked($event)" > </event-thumbnail> -->
+         <!-- <h3> {{thumbnail.someproperty}}</h3> -->
+         <!-- <button class="btn btn-primary" (click) = "thumbnail.callFromParent()">Click Me from Parent!</button> -->
+      <!-- Multiple events data binding -->
+      <div class="row">
+        <div class="col-md-5" *ngFor="let event of events">
+          <event-thumbnail [event] = "event" (click) = "handleThumbnailClick(event.name)"
+          (eventClick) = "handleEventClicked($event)"> </event-thumbnail>
+        </div>
+      </div>
+
+
+</div>

@@ -1,0 +1,22 @@
+<div>
+    <h1>Edit Your Profile </h1>
+    <hr>
+    <div class="col-md-4">
+      <form [formGroup]="profileForm" (ngSubmit)="saveProfile(profileForm.value)" autocomplete="off" novalidate>
+        <div class="form-group" [ngClass]="{'error': !validatefirstname()}">
+          <label for="firstName">First Name:</label>
+          <em *ngIf="!validatefirstname()">Required</em>
+          <em *ngIf="!validatefirstname() && firstName.errors.pattern">
+            Must start with letters</em>
+          <input formControlName="FirstName" id="firstName" type="text" class="form-control" placeholder="First Name..." />
+        </div>
+        <div class="form-group" [ngClass]="{'error': !validatelastname()}">
+          <label for="lastName">Last Name:</label>
+          <em *ngIf="!validatelastname()">Required</em>
+          <input formControlName="LastName" id="lastName" type="text" class="form-control" placeholder="Last Name..." />
+        </div>   
+        <button type="submit" [disabled]="!profileForm.valid" class="btn btn-primary">Save</button>
+        <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
+      </form>
+    </div>
+  </div>
