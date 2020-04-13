@@ -8,6 +8,7 @@ export class EventService{
     getEvents(): Observable<IEvent[]>{
       console.log('EventService: getEvents')
       let subject = new Subject<IEvent[]>()
+      
       //Java script setTimeout method
       setTimeout(() => {
         subject.next(EVENT); 

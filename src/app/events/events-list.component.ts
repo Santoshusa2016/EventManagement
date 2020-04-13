@@ -20,9 +20,11 @@ export class EventsListComponent {
         console.log('EventListComponent:OnInit called')
         this.events = this.route.snapshot.data['events']
     }
+
     handleEventClicked(data){
         console.log('received:', data.location.address)
     }
+    
     handleThumbnailClick(eventName){
         console.log(eventName)
         toastr.success(eventName)

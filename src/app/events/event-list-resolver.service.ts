@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 import { EventService } from './shared/event.service';
-import { Router, Resolve } from "@angular/router";
+import { Resolve } from "@angular/router";
 import { map } from "rxjs/operators";
 
 @Injectable()
 export class EventListResolver implements Resolve<any> {
-    constructor(private eventService: EventService, private router: Router) {
+    constructor(private eventService: EventService) {
         
     }
     resolve() {
