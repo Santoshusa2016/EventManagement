@@ -4,10 +4,10 @@ import { IEvent } from './shared/event.model';
 @Component( {
     selector: 'event-thumbnail',
     template : `
-                <div [routerLink]="['/events', event.id]" class="well"> <h4> {{event.name}} </h4 > </div>
-                <div> {{event.date}}</div>
+                <div [routerLink]="['/events', event.id]" class="well"> <h4> {{event.name | uppercase}} </h4 > </div>
+                <div> {{event.date | date:'shortDate'}}</div>
                 <div> {{event.time}}</div>
-                <div> \${{event.price}}</div>
+                <div> {{event.price | currency:'USD'}}</div>
                 <div [ngSwitch]="event?.time">
                     <span [class.green]="event?.time =='8:00 am'" *ngSwitchCase="'8:00 am'"> Early </span>
                     <span *ngSwitchCase="'10:00 am'"> Late </span>

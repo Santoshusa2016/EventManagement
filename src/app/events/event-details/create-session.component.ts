@@ -59,6 +59,7 @@ export class CreateSessionComponent{
         this.saveNewSession.emit(session)
     }
 
+    //CUSTOM Validator functions which could be created as seperate utility function
     private restrictedWords(words){
      return (control: FormControl):{[key: string]: any} =>
         {
