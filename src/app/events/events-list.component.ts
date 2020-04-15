@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, Inject } from "@angular/core";
 import { EventService } from './shared/event.service';
 import { ActivatedRoute } from "@angular/router";
 import { IEvent } from './shared/event.model';
-declare let toastr
+import {TOASTR_TOKEN, Toastr } from '../common/toastr.service';
 
 @Component(
     {
@@ -13,7 +13,10 @@ declare let toastr
 
 export class EventsListComponent {
     events:IEvent[]
-    constructor(private eventService: EventService, private route: ActivatedRoute){       
+    constructor(private eventService: EventService
+        , private route: ActivatedRoute
+        , @Inject(TOASTR_TOKEN) private toastr: Toastr)
+        {       
     }
 
     ngOnInit(){
@@ -27,6 +30,6 @@ export class EventsListComponent {
     
     handleThumbnailClick(eventName){
         console.log(eventName)
-        toastr.success(eventName)
+        this.toastr.success(eventName)
     }
 }

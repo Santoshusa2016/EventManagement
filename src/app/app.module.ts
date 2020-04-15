@@ -31,6 +31,9 @@ import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateSessionComponent } from './events/event-details/create-session.component';
 import { CollapsibleWellComponent } from './common/collapsible-well.component';
+import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
+
+declare let toastr: Toastr
 
 @NgModule({
   declarations: [
@@ -56,11 +59,21 @@ import { CollapsibleWellComponent } from './common/collapsible-well.component';
   ],
 
   providers: [
-    EventService, 
-    EventRouteActivator,
-    {provide: 'CanDeactivateCreateEvent', useValue: checkDirtyState},
+    EventService,
+    {
+      provide: EventRouteActivator,
+      useClass: EventRouteActivator
+    },
+    {
+      provide: 'CanDeactivateCreateEvent', 
+      useValue: checkDirtyState
+    },
     EventListResolver,
-    AuthService
+    AuthService,
+    {
+      provide: TOASTR_TOKEN, 
+      useValue: toastr
+    }
   ],
   bootstrap: [AppComponent]
 })
