@@ -14,10 +14,18 @@ import {
 
  import{
    DurationPipe,
-   EventService,
-   IEvent,
-   ISession
+   EventService
  } from "./events/shared/index";
+
+import {
+  JQ_TOKEN,
+  TOASTR_TOKEN,
+  Toastr,
+  CollapsibleWellComponent,
+  SimpleModalComponent,
+  ModelTriggerDirective
+}
+from "./common/index"
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,10 +38,13 @@ import { UserModule } from './user/user.module';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateSessionComponent } from './events/event-details/create-session.component';
-import { CollapsibleWellComponent } from './common/collapsible-well.component';
-import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
+import { NavBarComponent } from './nav/navbar.component';
 
-declare let toastr: Toastr
+// declare let toastr: Toastr
+// declare let jquery: any
+let toastr: Toastr = window['toastr'];
+let jquery = window['$'];
+
 
 @NgModule({
   declarations: [
@@ -46,7 +57,10 @@ declare let toastr: Toastr
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    NavBarComponent,
+    SimpleModalComponent,
+    ModelTriggerDirective
   ],
 
   imports: [
@@ -73,6 +87,10 @@ declare let toastr: Toastr
     {
       provide: TOASTR_TOKEN, 
       useValue: toastr
+    },
+    {
+      provide: JQ_TOKEN, 
+      useValue: jquery
     }
   ],
   bootstrap: [AppComponent]

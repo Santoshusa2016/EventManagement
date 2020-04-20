@@ -13,6 +13,7 @@ import {TOASTR_TOKEN, Toastr } from '../common/toastr.service';
 
 export class EventsListComponent {
     events:IEvent[]
+    
     constructor(private eventService: EventService
         , private route: ActivatedRoute
         , @Inject(TOASTR_TOKEN) private toastr: Toastr)

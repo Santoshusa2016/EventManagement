@@ -1,6 +1,6 @@
 import { EventService } from 'src/app/events/shared/event.service';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Params } from "@angular/router";
 import { ISession, IEvent } from '../shared/event.model';
 
 @Component({
@@ -21,10 +21,15 @@ export class EventDetailsComponent {
     filterBy:string = 'all'
     sortBy:string = 'votes  '
     constructor(private eventService: EventService, private route: ActivatedRoute) {
-        
+        this.addMode = false
     }
     ngOnInit(){
-     this.event =  this.eventService.getEventById(+this.route.snapshot.params['id'])
+
+        this.route.params.forEach((params: Params) => {
+            this.event =  this.eventService.getEventById(+params['id'])
+            this.addMode = false
+        })
+        //this.event =  this.eventService.getEventById(+this.route.snapshot.params['id'])
     }
 
     addSession(){
