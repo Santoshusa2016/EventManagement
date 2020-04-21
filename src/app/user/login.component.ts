@@ -23,7 +23,7 @@ export class LoginComponent {
     login(formValues){
         this.authService.login(formValues.username, formValues.password)
         console.log(formValues)
-        document.write(this.authService.currentuser.firstName + '' + this.authService.currentuser.lastName)
+        //document.write(this.authService.currentuser.firstName + '' + this.authService.currentuser.lastName)
         this.router.navigate(['events'])
     }
 

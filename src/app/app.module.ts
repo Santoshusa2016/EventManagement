@@ -10,6 +10,9 @@ import {
   EventRouteActivator,
   EventListResolver,  
   SessionListComponent,
+  UpVoteComponent,
+  VoterService,
+  LocationValidatorDirective
  } from "./events/index";
 
  import{
@@ -60,7 +63,9 @@ let jquery = window['$'];
     DurationPipe,
     NavBarComponent,
     SimpleModalComponent,
-    ModelTriggerDirective
+    ModelTriggerDirective,
+    UpVoteComponent,
+    LocationValidatorDirective
   ],
 
   imports: [
@@ -74,6 +79,7 @@ let jquery = window['$'];
 
   providers: [
     EventService,
+    VoterService,
     {
       provide: EventRouteActivator,
       useClass: EventRouteActivator

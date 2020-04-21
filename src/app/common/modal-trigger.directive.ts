@@ -5,7 +5,7 @@ import { JQ_TOKEN } from './jquery.service';
     selector:'[modal-trigger]'    
 })
 
-export class ModelTriggerDirective implements OnInit{
+export class ModelTriggerDirective implements OnInit {
    private el: HTMLElement
     @Input('modal-trigger') modelId: string
 
