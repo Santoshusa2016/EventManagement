@@ -25,11 +25,12 @@ export class LocationValidatorDirective implements Validator{
         if ((onlineUrlControl && onlineUrlControl.value) || ((addressControl && addressControl.value)
         && (cityControl && cityControl.value) && (countryControl && countryControl.value)
         )){
-            console.log('LocationValidatorDirective: validate if condition')
+            console.log(onlineUrlControl)
+            console.log('LocationValidatorDirective: validate : Valid')
             return null;            
         }
         else{
-             console.log('LocationValidatorDirective: validate else condition')            
+             console.log('LocationValidatorDirective: validate : INvalid')            
             return {'validateLocation': false}
         }
     }

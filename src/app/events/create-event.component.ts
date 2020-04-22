@@ -8,14 +8,14 @@ import { IEvent } from './shared';
 })
 
 export class CreateEventComponent{
-    //event = {} as IEvent
-    event: any
+    event = {} as IEvent
+    //event: any
     isDirty: boolean = false;
     constructor(private router:Router, private eventService: EventService){
         
     }
     ngOnInit(){
-        this.event = ""
+        
         // this.event =  {
         //     id: 1,
         //     name: 'Ng Spectacular',
