@@ -25,11 +25,23 @@ export class EventDetailsComponent {
     }
     ngOnInit(){
 
-        this.route.params.forEach((params: Params) => {
-            this.event =  this.eventService.getEventById(+params['id'])
-            this.addMode = false
-        })
+        //Calling the method directly which would be checked and validated by CanActivate method
         //this.event =  this.eventService.getEventById(+this.route.snapshot.params['id'])
+
+        //Calling the http client by passing the ID and subscribing to the observables
+        // this.route.params.forEach((params: Params) => {
+        //     this.eventService.getEventById(+params['id']).subscribe((event: IEvent)=> {
+        //         this.event = event
+        //         this.addMode = false
+        //     })
+        // })
+
+        //calling the resolve method to get the data
+         this.route.data.forEach((data) => {
+                this.event =  data['event']
+                this.addMode = false
+        })
+        
     }
 
     addSession(){
@@ -40,7 +52,8 @@ export class EventDetailsComponent {
         const nextID = Math.max.apply(null, this.event.sessions.map(s => s.id));
         session.id = nextID + 1
         this.event.sessions.push(session);
-        this.eventService.updateEvent(this.event)
+        //this.eventService.updateEvent(this.event)
+        this.eventService.saveEvent(this.event).subscribe();
         this.addMode = false
     }
 }

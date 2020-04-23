@@ -17,7 +17,8 @@ export class EventsListComponent {
     constructor(private eventService: EventService
         , private route: ActivatedRoute
         , @Inject(TOASTR_TOKEN) private toastr: Toastr)
-        {       
+    {
+
     }
 
     ngOnInit(){

@@ -22,7 +22,15 @@ export class NavBarComponent{
     }
     searchSessions(){
         console.log("NavBarComponent: searchSessions", this.searchtxt)
-        this.eventService.searchSessions(this.searchtxt).subscribe
+
+        // //Get by standard typescript function
+        // this.eventService.searchSessions(this.searchtxt).subscribe
+        // (sessions => {
+        //     this.foundSessions = sessions;
+        // });
+
+        //Get by HttpClient
+        this.eventService.searchSessionsByQueryString(this.searchtxt).subscribe
         (sessions => {
             this.foundSessions = sessions;
         });

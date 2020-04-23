@@ -1,5 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from "@angular/common/http";
+
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './routes'
+import { CreateEventComponent } from './events/create-event.component';
+import { Error404Component } from './errors/404.component';
+import { UserModule } from './user/user.module';
+import { AuthService } from './user/auth.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateSessionComponent } from './events/event-details/create-session.component';
+import { NavBarComponent } from './nav/navbar.component';
 
 //This are called as barrels
 import { 
@@ -12,7 +26,8 @@ import {
   SessionListComponent,
   UpVoteComponent,
   VoterService,
-  LocationValidatorDirective
+  LocationValidatorDirective,
+  EventResolver
  } from "./events/index";
 
  import{
@@ -30,18 +45,7 @@ import {
 }
 from "./common/index"
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 
-import { RouterModule } from '@angular/router';
-import { appRoutes } from './routes'
-import { CreateEventComponent } from './events/create-event.component';
-import { Error404Component } from './errors/404.component';
-import { UserModule } from './user/user.module';
-import { AuthService } from './user/auth.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CreateSessionComponent } from './events/event-details/create-session.component';
-import { NavBarComponent } from './nav/navbar.component';
 
 // declare let toastr: Toastr
 // declare let jquery: any
@@ -74,7 +78,8 @@ let jquery = window['$'];
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    UserModule
+    UserModule,
+    HttpClientModule
   ],
 
   providers: [
@@ -89,6 +94,7 @@ let jquery = window['$'];
       useValue: checkDirtyState
     },
     EventListResolver,
+    EventResolver,
     AuthService,
     {
       provide: TOASTR_TOKEN, 
